@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+	compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
+	// https://mvnrepository.com/artifact/org.springframework/spring-web
+	compile group: 'org.springframework', name: 'spring-web', version: '4.2.6.RELEASE'
+	compile("com.fasterxml.jackson.core:jackson-databind:2.7.0")
+	// https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl
+	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.5.0'
+	
+	
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
